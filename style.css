@@ -237,38 +237,119 @@ section {
     height: 80%;
 }
 
-/* ============= PROFILE SECTION ============= */
+/* ============= HERO SECTION (PROFILE + À PROPOS FUSIONNÉS) ============= */
 #profile {
     display: flex;
     justify-content: center;
-    gap: var(--gap-xxl);
-    height: var(--profile-height);
+    align-items: center;
+    height: auto;
+    min-height: var(--profile-height);
 }
 
-.section__pic-container {
-    display: flex;
-    height: var(--profile-img-size);
-    width: var(--profile-img-size);
-    margin: auto 0;
-}
-
-.section__text {
-    align-self: center;
+.hero-container {
+    max-width: 900px;
+    margin: 0 auto;
     text-align: center;
-    margin-top: 7rem;
-    margin-bottom: var(--margin-xl);
+    padding: 2rem 0;
+    width: 100%;
 }
 
-.section__text p {
+/* En-tête */
+.hero-header {
+    margin-bottom: 3rem;
+}
+
+.hero-greeting {
+    font-size: var(--font-sm);
+    color: var(--color-text);
+    margin-bottom: var(--gap-sm);
+    font-weight: 400;
+}
+
+.hero-name {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--color-black);
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
+}
+
+.hero-title {
+    font-size: 1.3rem;
+    color: var(--color-text);
+    font-weight: 400;
+}
+
+/* Bio */
+.hero-bio {
+    font-size: 1.05rem;
+    color: var(--color-text);
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+.hero-bio strong {
+    color: var(--color-black);
     font-weight: 600;
 }
 
-#socials-container {
+/* Actions */
+.hero-actions {
     display: flex;
     justify-content: center;
-    margin-top: var(--margin-sm);
     gap: var(--gap-md);
+    margin-bottom: 2.5rem;
 }
+
+/* Réseaux sociaux */
+.hero-socials {
+    display: flex;
+    justify-content: center;
+    gap: var(--gap-md);
+    padding-top: var(--padding-lg);
+    border-top: var(--border-width) solid var(--color-border);
+}
+
+.social-icon {
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    padding: 0.6rem;
+    border-radius: 50%;
+    background: var(--color-bg-light);
+}
+
+.social-icon:hover {
+    background: var(--color-primary);
+    transform: translateY(-3px);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-container > * {
+    animation: fadeInUp 0.6s ease-out backwards;
+}
+
+.hero-header { animation-delay: 0.1s; }
+.hero-cta { animation-delay: 0.3s; }
+.hero-bio { animation-delay: 0.4s; }
+.hero-actions { animation-delay: 0.5s; }
+.hero-socials { animation-delay: 0.6s; }
 
 /* ============= ICONS ============= */
 .icon {
@@ -343,11 +424,7 @@ article .icon {
     border-color: var(--color-border);
 }
 
-/* ============= ABOUT SECTION ============= */
-#apropos {
-    position: relative;
-}
-
+/* ============= ABOUT CONTAINERS ============= */
 .about-containers {
     display: flex;
     gap: var(--gap-lg);
@@ -359,10 +436,6 @@ article .icon {
     display: flex;
     justify-content: center;
     flex-direction: column;
-}
-
-.about-pic {
-    border-radius: var(--border-radius-md);
 }
 
 .details-container {

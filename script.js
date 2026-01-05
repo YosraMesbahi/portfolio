@@ -169,19 +169,25 @@ async function loadModalAndInit() {
   const placeholder = document.getElementById('modal-placeholder');
   if (!placeholder) return;
 
-  const response = await fetch('modale.html');
-  const html = await response.text();
-  placeholder.innerHTML = html;
+  try {
+    const response = await fetch('modale.html');
+    if (!response.ok) throw new Error('Erreur de chargement de la modale');
+    
+    const html = await response.text();
+    placeholder.innerHTML = html;
 
-  const projectModal = new ProjectModal();
+    const projectModal = new ProjectModal();
 
-  document.querySelectorAll('.btn-detail').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const projectId = btn.getAttribute('data-project-id');
-      projectModal.open(projectId);
+    document.querySelectorAll('.btn-detail').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const projectId = btn.getAttribute('data-project-id');
+        projectModal.open(projectId);
+      });
     });
-  });
+  } catch (error) {
+    console.error('Erreur lors du chargement de la modale:', error);
+  }
 }
 
 /* ========================= INITIALISATION GLOBALE ========================= */
@@ -211,6 +217,27 @@ document.addEventListener('DOMContentLoaded', () => {
   if (cvBtn) {
     cvBtn.addEventListener('click', () => {
       window.open('./assets/CV-MESBAHI.pdf', '_blank');
+    });
+  }
+
+  // Gestion des icônes réseaux sociaux
+  document.querySelectorAll('.social-icon').forEach(icon => {
+    icon.addEventListener('click', () => {
+      const social = icon.getAttribute('data-social');
+      
+      if (social === 'linkedin') {
+        window.open('https://www.linkedin.com/in/yosra-mesbahi/', '_blank', 'noopener,noreferrer');
+      } else if (social === 'github') {
+        window.open('https://github.com/YosraMesbahi', '_blank', 'noopener,noreferrer');
+      }
+    });
+  });
+
+  // Gestion du bouton "Voir tous mes projets"
+  const voirProjetsBtn = document.querySelector('[data-action="voir-projets"]');
+  if (voirProjetsBtn) {
+    voirProjetsBtn.addEventListener('click', () => {
+      window.location.href = './projets.html';
     });
   }
 });
