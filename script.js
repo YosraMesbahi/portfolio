@@ -25,7 +25,7 @@ const projectsData = {
       "Respect des standards web et de l'accessibilité",
       "Gestion de projet et respect des délais"
     ],
-    github: "https://github.com/YosraMesbahi/SAE-105.git",
+    github: "https://github.com/YosraMesbahi/site-statique-mmi.git",
     demo: "https://mesbahi.alwaysdata.net/Semestre-1%20/SAE-105/SITE-WEB-BUT-MMI/index.php"
   },
   2: {
@@ -39,7 +39,7 @@ const projectsData = {
       "Sécurisation des formulaires et des requêtes SQL",
       "Architecture MVC et séparation des préoccupations"
     ],
-    github: "https://github.com/YosraMesbahi/SAE-203.git",
+    github: "https://github.com/YosraMesbahi/site-bdd.git",
     demo: "https://glowcom.alwaysdata.net/SAE-203/DanYellow-cours-main-integration/code/index.php"
   },
   3: {
@@ -53,26 +53,10 @@ const projectsData = {
       "Optimisation du code et des performances",
       "Documentation technique du projet"
     ],
-    github: "https://github.com/YosraMesbahi/Mamba.git",
+    github: "https://github.com/YosraMesbahi/dynamisation-tableau-php.git",
     demo: "https://mesbahi.alwaysdata.net/Semestre-3/Atelier-php/Mamba/index.php"
   },
   4: {
-    title: "Site wordpress Simaya",
-    description: "Conception et développement d'un site vitrine sur WordPress avec Elementor. Création d'une identité visuelle cohérente et d'une expérience utilisateur optimale pour ce projet client. J'ai travaillé sur l'ensemble du processus, de la maquette à la mise en ligne.",
-    learnings: "Travailler avec un vrai client m'a appris l'importance de l'écoute active et de la gestion des attentes. J'ai développé mes compétences en communication pour traduire des besoins non-techniques en solutions concrètes. Ce projet m'a également enseigné à être plus flexible et à gérer les retours et modifications tout en gardant une vision cohérente du projet.",
-    technologies: ["WordPress", "Elementor"],
-    skills: [
-      "Maîtrise de WordPress et de son écosystème",
-      "Customisation avancée avec Elementor",
-      "Optimisation SEO et performances",
-      "Responsive design et tests multi-navigateurs",
-      "Relation client et gestion des demandes"
-    ],
-    github: null,
-    demo: null,
-    status: "en-cours"
-  },
-  5: {
     title: "Visualisation de données",
     description: "Projet en cours de développement axé sur la visualisation interactive de données. Utilisation de bibliothèques JavaScript modernes pour créer des graphiques et tableaux de bord dynamiques permettant d'analyser et de présenter des données complexes de manière claire et intuitive.",
     learnings: "Ce projet me permet d'explorer l'intersection entre design et développement. J'apprends à transformer des données brutes en récits visuels compréhensibles, à choisir les bonnes représentations graphiques selon le message à faire passer, et à optimiser les performances pour gérer de gros volumes de données.",
@@ -87,7 +71,7 @@ const projectsData = {
     github: null,
     demo: null
   },
-  6: {
+  5: {
     title: "Maquettes de site sur Figma",
     description: "Collection de maquettes web réalisées sur Figma dans le cadre de projets universitaires et personnels. Focus sur l'UX/UI design et les tendances actuelles du web design. Ces maquettes reflètent ma démarche créative et ma capacité à conceptualiser des interfaces modernes et ergonomiques.",
     learnings: "Le design m'a appris à penser 'utilisateur d'abord'. J'ai développé ma sensibilité aux détails visuels, à la hiérarchie de l'information et à l'importance de la cohérence dans une interface. Les tests utilisateurs m'ont montré que mes intuitions ne sont pas toujours justes et qu'il faut savoir remettre en question ses choix pour créer de meilleures expériences.",
