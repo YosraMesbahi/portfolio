@@ -847,6 +847,10 @@ footer nav {
   justify-content: center;
   min-height: 44px;
 }
+.modal-buttons .btn[style*="width: 100%"] {
+  width: 100% !important;
+  max-width: 100%;
+}
 
 /* Message projet en cours */
 .modal-buttons p {

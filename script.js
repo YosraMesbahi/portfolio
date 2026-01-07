@@ -16,6 +16,7 @@ function toggleMenu(event) {
 const projectsData = {
   1: {
     title: "Site web pour le BUT MMI",
+    type: "code",
     description: "Ce projet universitaire m'a permis de réaliser un site web complet pour présenter la formation BUT MMI. J'ai développé toute l'interface en respectant les contraintes du cahier des charges, en mettant l'accent sur l'ergonomie et l'accessibilité.",
     learnings: "Ce projet m'a permis de découvrir l'importance de la planification en amont. J'ai appris à structurer mon code de manière logique, à respecter les standards du web, et surtout à gérer mon temps efficacement pour livrer un projet complet dans les délais. La collaboration avec mes pairs m'a également enseigné l'importance de la communication dans un projet technique.",
     technologies: ["HTML", "CSS", "PHP"],
@@ -30,6 +31,7 @@ const projectsData = {
   },
   2: {
     title: "Création d'un CRUD",
+    type: "code",
     description: "Développement d'une application web complète avec système CRUD (Create, Read, Update, Delete). Ce projet m'a permis de maîtriser la manipulation de bases de données et la création d'interfaces d'administration robustes et sécurisées.",
     learnings: "Ce projet a été un véritable tournant dans ma compréhension du développement back-end. J'ai appris à concevoir une base de données relationnelle cohérente, à sécuriser mes requêtes SQL contre les injections, et à structurer mon code selon l'architecture MVC. Les difficultés rencontrées lors du débogage m'ont enseigné la patience et l'importance des tests.",
     technologies: ["HTML", "CSS", "PHP", "MySQL"],
@@ -44,6 +46,7 @@ const projectsData = {
   },
   3: {
     title: "Dynamisation d'un site web",
+    type: "code",
     description: "Transformation d'un site statique en site dynamique. J'ai implémenté un système de templates et de gestion de contenu pour faciliter la maintenance et l'évolutivité du site. Ce projet m'a permis de comprendre l'importance de la modularité dans le développement web.",
     learnings: "La refactorisation de code existant m'a appris à lire et comprendre du code que je n'avais pas écrit. J'ai découvert les avantages de la programmation modulaire et l'importance de créer des composants réutilisables. Ce projet m'a également sensibilisé à la notion de dette technique et à l'importance de documenter son code.",
     technologies: ["HTML", "PHP"],
@@ -58,6 +61,7 @@ const projectsData = {
   },
   4: {
     title: "Visualisation de données",
+    type: "code",
     description: "Projet en cours de développement axé sur la visualisation interactive de données. Utilisation de bibliothèques JavaScript modernes pour créer des graphiques et tableaux de bord dynamiques permettant d'analyser et de présenter des données complexes de manière claire et intuitive.",
     learnings: "Ce projet me permet d'explorer l'intersection entre design et développement. J'apprends à transformer des données brutes en récits visuels compréhensibles, à choisir les bonnes représentations graphiques selon le message à faire passer, et à optimiser les performances pour gérer de gros volumes de données.",
     technologies: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
@@ -73,6 +77,7 @@ const projectsData = {
   },
   5: {
     title: "Maquettes de site sur Figma",
+    type: "design",
     description: "Collection de maquettes web réalisées sur Figma dans le cadre de projets universitaires et personnels. Focus sur l'UX/UI design et les tendances actuelles du web design. Ces maquettes reflètent ma démarche créative et ma capacité à conceptualiser des interfaces modernes et ergonomiques.",
     learnings: "Le design m'a appris à penser 'utilisateur d'abord'. J'ai développé ma sensibilité aux détails visuels, à la hiérarchie de l'information et à l'importance de la cohérence dans une interface. Les tests utilisateurs m'ont montré que mes intuitions ne sont pas toujours justes et qu'il faut savoir remettre en question ses choix pour créer de meilleures expériences.",
     technologies: ["Figma"],
@@ -84,7 +89,7 @@ const projectsData = {
       "Tests utilisateurs et itérations"
     ],
     github: null,
-    demo: null
+    demo: "https://www.figma.com/proto/SJqtcCVsUBsuKLdMjAa2Cw/Maquette---Agence-immobili%C3%A8re?node-id=1-269&p=f&t=fbaZdKtS0w81hRjO-1&scaling=scale-down&content-scaling=fixed&page-id=1%3A2&starting-point-node-id=1%3A269"
   }
 };
 
@@ -111,34 +116,87 @@ class ProjectModal {
     });
   }
 
-  open(projectId) {
-    const data = projectsData[projectId];
-    if (!data) return;
+open(projectId) {
+  const data = projectsData[projectId];
+  if (!data) return;
 
-    this.lastFocusedElement = document.activeElement;
+  this.lastFocusedElement = document.activeElement;
 
-    document.getElementById('modal-title').textContent = data.title;
-    document.getElementById('modal-description').textContent = data.description;
-    document.getElementById('modal-learnings').textContent = data.learnings;
+  // Remplir les données de base
+  document.getElementById('modal-title').textContent = data.title;
+  document.getElementById('modal-description').textContent = data.description;
+  document.getElementById('modal-learnings').textContent = data.learnings;
 
-    document.getElementById('modal-github').href = data.github || "#";
-    document.getElementById('modal-demo').href = data.demo || "#";
+  // Technologies
+  const techContainer = document.getElementById('modal-tech-badges');
+  techContainer.innerHTML = data.technologies
+    .map(tech => `<span class="tech-badge">${tech}</span>`)
+    .join('');
 
-    const techContainer = document.getElementById('modal-tech-badges');
-    techContainer.innerHTML = data.technologies
-      .map(tech => `<span class="tech-badge">${tech}</span>`)
-      .join('');
+  // Compétences
+  const skillsList = document.getElementById('modal-skills-list');
+  skillsList.innerHTML = data.skills
+    .map(skill => `<li>${skill}</li>`)
+    .join('');
 
-    const skillsList = document.getElementById('modal-skills-list');
-    skillsList.innerHTML = data.skills
-      .map(skill => `<li>${skill}</li>`)
-      .join('');
-
-    this.modal.classList.add('active');
-    document.body.classList.add('modal-open');
-
-    this.closeBtn.focus();
+  // ✅ GESTION INTELLIGENTE DES BOUTONS
+  const buttonsContainer = document.querySelector('.modal-buttons');
+  
+  // CAS 1 : Projet de type "design" (maquettes Figma)
+  if (data.type === 'design') {
+    if (data.demo) {
+      buttonsContainer.innerHTML = `
+        <a href="${data.demo}" target="_blank" rel="noopener noreferrer" class="btn btn-color-1" style="width: 100%;">
+          Voir la maquette
+        </a>
+      `;
+    } else {
+      buttonsContainer.innerHTML = `
+        <p style="text-align: center; color: var(--color-text); margin: 0;">
+          <em>Maquette en cours de finalisation</em>
+        </p>
+      `;
+    }
   }
+  // CAS 2 : Projet sans liens (en développement)
+  else if (!data.github && !data.demo) {
+    buttonsContainer.innerHTML = `
+      <p style="text-align: center; color: var(--color-text); margin: 0;">
+        <em>Projet en cours de développement - Disponible prochainement</em>
+      </p>
+    `;
+  }
+  // CAS 3 : Projet de code avec liens
+  else {
+    buttonsContainer.innerHTML = `
+      <a id="modal-github" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-color-2">GitHub</a>
+      <a id="modal-demo" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-color-1">Live Demo</a>
+    `;
+    
+    const githubBtn = document.getElementById('modal-github');
+    const demoBtn = document.getElementById('modal-demo');
+    
+    // Afficher/cacher selon disponibilité
+    if (data.github) {
+      githubBtn.href = data.github;
+      githubBtn.style.display = 'inline-flex';
+    } else {
+      githubBtn.style.display = 'none';
+    }
+    
+    if (data.demo) {
+      demoBtn.href = data.demo;
+      demoBtn.style.display = 'inline-flex';
+    } else {
+      demoBtn.style.display = 'none';
+    }
+  }
+
+  // Afficher la modale
+  this.modal.classList.add('active');
+  document.body.classList.add('modal-open');
+  this.closeBtn.focus();
+}
 
   close() {
     this.modal.classList.remove('active');
