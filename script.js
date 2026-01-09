@@ -90,8 +90,28 @@ const projectsData = {
     ],
     github: null,
     demo: "https://www.figma.com/proto/SJqtcCVsUBsuKLdMjAa2Cw/Maquette---Agence-immobili%C3%A8re?node-id=1-269&p=f&t=fbaZdKtS0w81hRjO-1&scaling=scale-down&content-scaling=fixed&page-id=1%3A2&starting-point-node-id=1%3A269"
+  },
+
+   6: {
+    title: "Système de Gestion d'Adhérents",
+    type: "code",
+    description: "Développement d'une application de back-office dédiée à la gestion des membres d'un club. Le projet inclut une interface d'administration complète permettant de piloter la base de données des adhérents de manière sécurisée et intuitive.",
+    learnings: "Ce projet m'a permis de maîtriser le cycle de vie des données (CRUD) et de comprendre l'importance de la sécurité côté serveur. J'ai appris à sécuriser les accès via un système d'authentification et à protéger les données sensibles des utilisateurs en utilisant des techniques de hachage de mots de passe.",
+    technologies: ["PHP", "MySQL", "HTML/CSS", "Bootstrap"], // Ajustez selon votre stack réelle
+    skills: [
+      "Architecture de base de données relationnelle",
+      "Implémentation d'un CRUD complet (Créer, Lire, Mettre à jour, Supprimer)",
+      "Sécurisation des mots de passe (Fonction crypt/hash)",
+      "Gestion de l'authentification et des sessions (Login)",
+      "Développement de formulaires avec recherche dynamique"
+    ],
+    github: null,
+    demo: "https://mesbahi.alwaysdata.net/backoffice-crud/login.php"
   }
 };
+
+
+
 
 /* ========================= MODALE PROJETS ========================= */
 
