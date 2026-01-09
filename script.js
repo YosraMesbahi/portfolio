@@ -97,10 +97,10 @@ const projectsData = {
     type: "code",
     description: "Développement d'une application de back-office dédiée à la gestion des membres d'un club. Le projet inclut une interface d'administration complète permettant de piloter la base de données des adhérents de manière sécurisée et intuitive.",
     learnings: "Ce projet m'a permis de maîtriser le cycle de vie des données (CRUD) et de comprendre l'importance de la sécurité côté serveur. J'ai appris à sécuriser les accès via un système d'authentification et à protéger les données sensibles des utilisateurs en utilisant des techniques de hachage de mots de passe.",
-    technologies: ["PHP", "MySQL", "HTML/CSS", "Bootstrap"], // Ajustez selon votre stack réelle
+    technologies: ["PHP", "MySQL", "HTML/CSS"],
     skills: [
       "Architecture de base de données relationnelle",
-      "Implémentation d'un CRUD complet (Créer, Lire, Mettre à jour, Supprimer)",
+      "Implémentation d'un CRUD complet (Ajout, Lire, Modifier, Supprimer)",
       "Sécurisation des mots de passe (Fonction crypt/hash)",
       "Gestion de l'authentification et des sessions (Login)",
       "Développement de formulaires avec recherche dynamique"
