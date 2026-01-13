@@ -1,0 +1,312 @@
+/* ========================= MENU HAMBURGER ========================= */
+
+function toggleMenu(event) {
+  const hamburgerMenu = event.currentTarget.closest('.hamburger-menu');
+  if (!hamburgerMenu) return;
+
+  const menu = hamburgerMenu.querySelector('.menu-links');
+  const icon = hamburgerMenu.querySelector('.hamburger-icon');
+
+  menu.classList.toggle('open');
+  icon.classList.toggle('open');
+}
+
+// ============= DONNÉES DES PROJETS ============= 
+// Centralisation des données pour faciliter la maintenance
+const projectsData = {
+    1: {
+    title: "Site web pour le BUT MMI",
+    type: "code",
+    description: "Plateforme d'information conçue pour valoriser la formation BUT MMI auprès des futurs étudiants.",
+    technologies: ["HTML", "CSS", "PHP"],
+    client: "IUT de Cergy-Pontoise (Département MMI)",
+    problem: "Manque de visibilité de la formation auprès des bacheliers.",
+    solution: "Interface structurée par compétences avec intégration de contenus dynamiques en PHP.",
+    skills: [
+      "Intégration à partir d'une maquette définie",
+      "Intégration d'un formulaire de contact",
+      "Gestion de projet et deadlines"
+    ],
+    github: "https://github.com/YosraMesbahi/site-statique-mmi.git",
+    demo: "https://mesbahi.alwaysdata.net/Semestre-1%20/SAE-105/SITE-WEB-BUT-MMI/index.php"
+  },
+  2: {
+    title: "Création d'un CRUD",
+    type: "code",
+    description: "Application permettant la gestion sécurisée de données via un système CRUD complet.",
+    technologies: ["HTML", "CSS", "PHP", "MySQL"],
+    client: "IUT de Cergy-Pontoise (Département MMI)",
+    problem: "Besoin de gérer des données sans outils complexes.",
+    solution: "Système CRUD complet avec validation de formulaires et sécurisation par requêtes préparées.",
+    skills: [
+      "Conception de bases de données",
+      "Opérations CRUD",
+    ],
+    github: "https://github.com/YosraMesbahi/site-bdd.git",
+    demo: "https://glowcom.alwaysdata.net/SAE-203/DanYellow-cours-main-integration/code/index.php"
+  },
+  3: {
+    title: "Dynamisation d'un site web",
+    type: "code",
+    description: "Transformation d'un site statique en plateforme dynamique via un système de templates PHP.",
+    technologies: ["HTML", "PHP"],
+    client: "IUT de Cergy-Pontoise (Département MMI)",
+    problem: "Maintenance fastidieuse d'un site statique avec duplication de code.",
+    solution: "Templates PHP réutilisables avec composants séparés pour faciliter les mises à jour.",
+    skills: [
+      "Refactorisation HTML vers PHP",
+      "Création de templates réutilisables",
+      "Optimisation du code",
+    ],
+    github: "https://github.com/YosraMesbahi/dynamisation-tableau-php.git",
+    demo: "https://mesbahi.alwaysdata.net/Semestre-3/Atelier-php/Mamba/index.php"
+  },
+  4: {
+    title: "Visualisation de données",
+    type: "code",
+    description: "Interface interactive pour présenter des données de manière intuitive.",
+    technologies: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
+    client: "IUT de Cergy-Pontoise (Département MMI)",
+    problem: "Difficulté d'interpréter de grandes quantités de données brutes.",
+    solution: "Graphiques dynamiques et tableaux de bord interactifs avec traitement PHP/MySQL.",
+    skills: [
+      "Traitement de données",
+      "Visualisations interactives",
+      "Développement front-end moderne",
+      "Intégration de bibliothèques JS",
+      "Optimisation des performances"
+    ],
+    github: "https://github.com/YosraMesbahi/SAE303",
+    demo: "https://yosramesbahi.github.io/SAE303/"
+  },
+  5: {
+    title: "Maquettes de site sur Figma",
+    type: "design",
+    description: "Maquettes haute-fidélité pour une agence immobilière.",
+    technologies: ["Figma"],
+    client: "Agence Immobilière fictive",
+    problem: "Besoin d'une interface moderne pour la recherche de biens immobiliers.",
+    solution: "Système de design cohérent avec prototypage interactif complet.",
+    skills: [
+      "Identification des parcours client à partir d’enquêtes de terrain",
+      "Modélisation d'un système d’information : arborescence",
+      "Conception de croquis et de dessins de reflexion ",
+      "Conception des maquettes high-fidelity",
+      "Prototypage interactif",
+    ],
+    github: null,
+    demo: "https://www.figma.com/proto/SJqtcCVsUBsuKLdMjAa2Cw/Maquette---Agence-immobili%C3%A8re?node-id=1-269&p=f&t=fbaZdKtS0w81hRjO-1&scaling=scale-down&content-scaling=fixed&page-id=1%3A2&starting-point-node-id=1%3A269"
+  },
+  6: {
+    title: "Système de Gestion d'Adhérents",
+    type: "code",
+    description: "Application back-office complète pour la gestion administrative des membres d'un club associatif.",
+    technologies: ["PHP", "MySQL", "HTML", "CSS"],
+    client: "Club sportif fictif",
+    problem: "Gestion manuelle chronophage ",
+    solution: "Interface d'administration centralisée et sécurisée par authentification",
+    skills: [
+      "Architecture BDD relationnelle",
+      "CRUD complet (Créer, Lire, Modifier, Supprimer)",
+      "Sécurisation des mots de passe",
+      "Gestion authentification et sessions",
+    ],
+    github: "https://github.com/YosraMesbahi/gestion-adherents-club.git",
+    demo: "https://mesbahi.alwaysdata.net/backoffice-crud/login.php"
+  }
+};
+
+
+
+/* ========================= MODALE PROJETS ========================= */
+
+class ProjectModal {
+  constructor() {
+    this.modal = document.getElementById('modal-container');
+    this.closeBtn = this.modal.querySelector('.modal-close');
+    this.backdrop = this.modal.querySelector('.modal-backdrop');
+    this.lastFocusedElement = null;
+
+    this.initEvents();
+  }
+
+  initEvents() {
+    this.closeBtn.addEventListener('click', () => this.close());
+    this.backdrop.addEventListener('click', () => this.close());
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && this.modal.classList.contains('active')) {
+        this.close();
+      }
+    });
+  }
+
+open(projectId) {
+  const data = projectsData[projectId];
+  if (!data) return;
+
+  this.lastFocusedElement = document.activeElement;
+
+  // Remplir les données de base
+  document.getElementById('modal-title').textContent = data.title;
+  document.getElementById('modal-description').textContent = data.description;
+  document.getElementById('modal-client').textContent = data.client;
+  document.getElementById('modal-problem').textContent = data.problem;
+  document.getElementById('modal-solution').textContent = data.solution;
+
+  // Technologies
+  const techContainer = document.getElementById('modal-tech-badges');
+  techContainer.innerHTML = data.technologies
+    .map(tech => `<span class="tech-badge">${tech}</span>`)
+    .join('');
+
+  // Compétences
+  const skillsList = document.getElementById('modal-skills-list');
+  skillsList.innerHTML = data.skills
+    .map(skill => `<li>${skill}</li>`)
+    .join('');
+
+  // ✅ GESTION INTELLIGENTE DES BOUTONS
+  const buttonsContainer = document.querySelector('.modal-buttons');
+  
+  // CAS 1 : Projet de type "design" (maquettes Figma)
+  if (data.type === 'design') {
+    if (data.demo) {
+      buttonsContainer.innerHTML = `
+        <a href="${data.demo}" target="_blank" rel="noopener noreferrer" class="btn btn-color-1" style="width: 100%;">
+          Voir la maquette
+        </a>
+      `;
+    } else {
+      buttonsContainer.innerHTML = `
+        <p style="text-align: center; color: var(--color-text); margin: 0;">
+          <em>Maquette en cours de finalisation</em>
+        </p>
+      `;
+    }
+  }
+  // CAS 2 : Projet sans liens (en développement)
+  else if (!data.github && !data.demo) {
+    buttonsContainer.innerHTML = `
+      <p style="text-align: center; color: var(--color-text); margin: 0;">
+        <em>Projet en cours de développement - Disponible prochainement</em>
+      </p>
+    `;
+  }
+  // CAS 3 : Projet de code avec liens
+  else {
+    buttonsContainer.innerHTML = `
+      <a id="modal-github" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-color-2">GitHub</a>
+      <a id="modal-demo" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-color-1">Live Demo</a>
+    `;
+    
+    const githubBtn = document.getElementById('modal-github');
+    const demoBtn = document.getElementById('modal-demo');
+    
+    // Afficher/cacher selon disponibilité
+    if (data.github) {
+      githubBtn.href = data.github;
+      githubBtn.style.display = 'inline-flex';
+    } else {
+      githubBtn.style.display = 'none';
+    }
+    
+    if (data.demo) {
+      demoBtn.href = data.demo;
+      demoBtn.style.display = 'inline-flex';
+    } else {
+      demoBtn.style.display = 'none';
+    }
+  }
+
+  // Afficher la modale
+  this.modal.classList.add('active');
+  document.body.classList.add('modal-open');
+  this.closeBtn.focus();
+}
+
+  close() {
+    this.modal.classList.remove('active');
+    document.body.classList.remove('modal-open');
+    if (this.lastFocusedElement) this.lastFocusedElement.focus();
+  }
+}
+
+/* ========================= CHARGEMENT DE LA MODALE ========================= */
+
+async function loadModalAndInit() {
+  const placeholder = document.getElementById('modal-placeholder');
+  if (!placeholder) return;
+
+  try {
+    const response = await fetch('modale.html');
+    if (!response.ok) throw new Error('Erreur de chargement de la modale');
+    
+    const html = await response.text();
+    placeholder.innerHTML = html;
+
+    const projectModal = new ProjectModal();
+
+    document.querySelectorAll('.btn-detail').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const projectId = btn.getAttribute('data-project-id');
+        projectModal.open(projectId);
+      });
+    });
+  } catch (error) {
+    console.error('Erreur lors du chargement de la modale:', error);
+  }
+}
+
+/* ========================= INITIALISATION GLOBALE ========================= */
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  // Menu hamburger
+  document.querySelectorAll('.hamburger-icon').forEach(icon => {
+    icon.addEventListener('click', toggleMenu);
+  });
+
+  document.querySelectorAll('.menu-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      const hamburgerMenu = link.closest('.hamburger-menu');
+      if (!hamburgerMenu) return;
+
+      hamburgerMenu.querySelector('.menu-links').classList.remove('open');
+      hamburgerMenu.querySelector('.hamburger-icon').classList.remove('open');
+    });
+  });
+
+  // Modales projets
+  loadModalAndInit();
+
+  // Bouton CV
+  const cvBtn = document.querySelector('[data-action="download-cv"]');
+  if (cvBtn) {
+    cvBtn.addEventListener('click', () => {
+      window.open('./assets/CV-MESBAHI.pdf', '_blank');
+    });
+  }
+
+  // Gestion des icônes réseaux sociaux
+  document.querySelectorAll('.social-icon').forEach(icon => {
+    icon.addEventListener('click', () => {
+      const social = icon.getAttribute('data-social');
+      
+      if (social === 'linkedin') {
+        window.open('https://www.linkedin.com/in/yosra-mesbahi/', '_blank', 'noopener,noreferrer');
+      } else if (social === 'github') {
+        window.open('https://github.com/YosraMesbahi', '_blank', 'noopener,noreferrer');
+      }
+    });
+  });
+
+  // Gestion du bouton "Voir tous mes projets"
+  const voirProjetsBtn = document.querySelector('[data-action="voir-projets"]');
+  if (voirProjetsBtn) {
+    voirProjetsBtn.addEventListener('click', () => {
+      window.location.href = './projets.html';
+    });
+  }
+});

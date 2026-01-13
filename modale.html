@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Portfolio de Yosra Mesbahi, étudiante en BUT MMI à Cergy-Pontoise. Spécialisée en développement web front-end et webdesign. Découvrez mes projets HTML, CSS, JavaScript, PHP et MySQL. Recherche de stage à partir d'avril 2026."/>
+  <meta name="keywords"
+    content="Yosra Mesbahi, développement web, webdesign, BUT MMI, portfolio, stage développeur front-end, IUT Cergy-Pontoise" />
+  <meta name="author" content="Yosra Mesbahi" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yosramesbahi.github.io/portfolio/" />
+  <meta property="og:title" content="Yosra Mesbahi - Portfolio Étudiante BUT MMI" />
+  <meta property="og:description"
+    content="Développement web, design et projets créatifs. En recherche de stage pour avril 2026." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
+
+  <title>Mes Projets - Yosra Mesbahi</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <main>
+    <div id="modal-container" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title"
+      aria-hidden="true">
+      <div class="modal-backdrop"></div>
+      <div class="modal-box">
+        <button class="modal-close" aria-label="Fermer la modale">
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+        <div class="modal-content-wrapper">
+          <!-- Contenu injecté dynamiquement par JS -->
+          <h2 id="modal-title"></h2>
+          <p id="modal-description" class="modal-text"></p>
+
+          <div class="modal-tech">
+            <strong>Technologies :</strong>
+            <div id="modal-tech-badges"></div>
+          </div>
+
+          <div class="modal-tech">
+            <strong>Commanditaire</strong>
+            <p id="modal-client" class="modal-text"></p>
+            <strong>Problèmatique</strong>
+            <p id="modal-problem" class="modal-text"></p>
+            <strong>Solutions</strong>
+            <p id="modal-solution" class="modal-text"></p>
+          </div>
+
+          <div class="modal-competences">
+            <strong>Compétences développées :</strong>
+            <ul id="modal-skills-list"></ul>
+          </div>
+
+          <div class="modal-buttons">
+            <a id="modal-github" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-color-2">GitHub</a>
+            <a id="modal-demo" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-color-1">Live Demo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>
