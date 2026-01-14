@@ -181,6 +181,7 @@ section {
     height: var(--section-height);
     margin: 0 var(--margin-xl);
     min-height: fit-content;
+    scroll-margin-top: var(--nav-height);
 }
 
 #all-projets {
