@@ -14,7 +14,7 @@ function toggleMenu(event) {
 // ============= DONNÉES DES PROJETS ============= 
 // Centralisation des données pour faciliter la maintenance
 const projectsData = {
-    1: {
+  1: {
     title: "Site web pour le BUT MMI",
     type: "code",
     description: "Plateforme d'information conçue pour valoriser la formation BUT MMI auprès des futurs étudiants.",
@@ -45,7 +45,24 @@ const projectsData = {
     github: "https://github.com/YosraMesbahi/site-bdd.git",
     demo: "https://glowcom.alwaysdata.net/SAE-203/DanYellow-cours-main-integration/code/index.php"
   },
-  3: {
+    3: {
+    title: "Campagne visuelle M&M's",
+    type: "design",
+    description: "Création de supports de communication visuelle pour le lancement d'un nouveau produit M&M's.",
+    technologies: ["Photoshop"],
+    client: "Projet Académique (IUT)",
+    problem: "Promouvoir un nouveau produit en respectant l'identité visuelle forte de la marque M&M's.",
+    solution: "Conception de visuels publicitaires (post Instagram, affiche) mettant en avant le produit via du compositing et de la retouche avancée.",
+    skills: [
+      "Retouche d'image et colorimétrie",
+      "Composition et mise en page publicitaire",
+      "Respect d'une charte graphique",
+      "Préparation de fichiers pour le web et le print"
+    ],
+    github: null,
+    demo: "https://www.figma.com/deck/M2cFJlEq5mxr84OBunuQbn"
+  },
+  4: {
     title: "Dynamisation d'un site web",
     type: "code",
     description: "Transformation d'un site statique en plateforme dynamique via un système de templates PHP.",
@@ -61,7 +78,25 @@ const projectsData = {
     github: "https://github.com/YosraMesbahi/dynamisation-tableau-php.git",
     demo: "https://mesbahi.alwaysdata.net/Semestre-3/Atelier-php/Mamba/index.php"
   },
-  4: {
+  5: {
+    title: "Maquettes de site sur Figma",
+    type: "design",
+    description: "Maquettes haute-fidélité pour une agence immobilière.",
+    technologies: ["Figma"],
+    client: "Agence Immobilière fictive",
+    problem: "Besoin d'une interface moderne pour la recherche de biens immobiliers.",
+    solution: "Système de design cohérent avec prototypage interactif complet.",
+    skills: [
+      "Identification des parcours client à partir d'enquêtes de terrain",
+      "Modélisation d'un système d'information : arborescence",
+      "Conception de croquis et de dessins de réflexion",
+      "Conception des maquettes high-fidelity",
+      "Prototypage interactif",
+    ],
+    github: null,
+    demo: "https://www.figma.com/proto/SJqtcCVsUBsuKLdMjAa2Cw/Maquette---Agence-immobili%C3%A8re?node-id=1-269&p=f&t=fbaZdKtS0w81hRjO-1&scaling=scale-down&content-scaling=fixed&page-id=1%3A2&starting-point-node-id=1%3A269"
+  },
+  6: {
     title: "Visualisation de données",
     type: "code",
     description: "Interface interactive pour présenter des données de manière intuitive.",
@@ -79,26 +114,8 @@ const projectsData = {
     github: "https://github.com/YosraMesbahi/SAE303",
     demo: "https://yosramesbahi.github.io/SAE303/"
   },
-  5: {
-    title: "Maquettes de site sur Figma",
-    type: "design",
-    description: "Maquettes haute-fidélité pour une agence immobilière.",
-    technologies: ["Figma"],
-    client: "Agence Immobilière fictive",
-    problem: "Besoin d'une interface moderne pour la recherche de biens immobiliers.",
-    solution: "Système de design cohérent avec prototypage interactif complet.",
-    skills: [
-      "Identification des parcours client à partir d’enquêtes de terrain",
-      "Modélisation d'un système d’information : arborescence",
-      "Conception de croquis et de dessins de reflexion ",
-      "Conception des maquettes high-fidelity",
-      "Prototypage interactif",
-    ],
-    github: null,
-    demo: "https://www.figma.com/proto/SJqtcCVsUBsuKLdMjAa2Cw/Maquette---Agence-immobili%C3%A8re?node-id=1-269&p=f&t=fbaZdKtS0w81hRjO-1&scaling=scale-down&content-scaling=fixed&page-id=1%3A2&starting-point-node-id=1%3A269"
-  },
-  6: {
-    title: "Système de Gestion d'Adhérents",
+  7: {
+    title: "CRUD gestion d'adhérents",
     type: "code",
     description: "Application back-office complète pour la gestion administrative des membres d'un club associatif.",
     technologies: ["PHP", "MySQL", "HTML", "CSS"],
@@ -112,12 +129,44 @@ const projectsData = {
       "Gestion authentification et sessions",
     ],
     github: "https://github.com/YosraMesbahi/gestion-adherents-club.git",
-    demo: "https://mesbahi.alwaysdata.net/backoffice-crud/login.php"
+    demo: "https://mesbahi.alwaysdata.net/backoffice-crud/src/login.php"
+  },
+  8: {
+    title: "Charte graphique webdocumentaire",
+    type: "design",
+    description: "Conception complète de l'identité visuelle et de l'interface utilisateur pour un webdocumentaire interactif.",
+    technologies: ["Figma"],
+    client: "Projet Académique (IUT de Cergy-Pontoise)",
+    problem: "Définir une ambiance visuelle qui serve la narration tout en garantissant une navigation intuitive.",
+    solution: "Création d'un système de design (Design System) incluant typographies, palettes de couleurs et composants d'interface sur Figma.",
+    skills: [
+      "Création d'une identité visuelle cohérente",
+      "Conception d'UI (Interface Utilisateur)",
+      "Élaboration d'un Design System",
+      "Prototypage de parcours interactifs"
+    ],
+    github: null,
+    demo: "https://www.figma.com/deck/QznXvMtJNn0erGR7Gnhqfn/Untitled?node-id=0-40&t=kODxSVaHwzMubOuu-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1" 
+  },
+  9: {
+    title: "Stratégie de communication",
+    type: "design",
+    description: "Élaboration d'une stratégie de communication plurimédia complète pour promouvoir une marque ou un produit sur les canaux digitaux.",
+    technologies: ["Figma", "Marketing Digital"],
+    client: "Projet Académique (IUT de Cergy-Pontoise)",
+    problem: "Concevoir une stratégie cohérente pour toucher efficacement une cible sur différents supports digitaux.",
+    solution: "Définition d'une stratégie multicanale incluant analyse de cible, tone of voice, planning éditorial et création de contenus adaptés à chaque plateforme.",
+    skills: [
+      "Analyse de cible et personas",
+      "Définition d'axes de communication",
+      "Planning éditorial multicanal",
+      "Création de contenus adaptés (réseaux sociaux, web)",
+      "Cohérence de la stratégie plurimédia"
+    ],
+    github: null,
+    demo: "https://www.figma.com/deck/uC9xyIZBj1md3bf8xFEur3/Strat%C3%A9gie-de-Communication-Plurim%C3%A9dia?node-id=1-447&t=YJrRIeAFV4XfyXXp-1"
   }
 };
-
-
-
 /* ========================= MODALE PROJETS ========================= */
 
 class ProjectModal {
@@ -141,89 +190,89 @@ class ProjectModal {
     });
   }
 
-open(projectId) {
-  const data = projectsData[projectId];
-  if (!data) return;
+  open(projectId) {
+    const data = projectsData[projectId];
+    if (!data) return;
 
-  this.lastFocusedElement = document.activeElement;
+    this.lastFocusedElement = document.activeElement;
 
-  // Remplir les données de base
-  document.getElementById('modal-title').textContent = data.title;
-  document.getElementById('modal-description').textContent = data.description;
-  document.getElementById('modal-client').textContent = data.client;
-  document.getElementById('modal-problem').textContent = data.problem;
-  document.getElementById('modal-solution').textContent = data.solution;
+    // Remplir les données de base
+    document.getElementById('modal-title').textContent = data.title;
+    document.getElementById('modal-description').textContent = data.description;
+    document.getElementById('modal-client').textContent = data.client;
+    document.getElementById('modal-problem').textContent = data.problem;
+    document.getElementById('modal-solution').textContent = data.solution;
 
-  // Technologies
-  const techContainer = document.getElementById('modal-tech-badges');
-  techContainer.innerHTML = data.technologies
-    .map(tech => `<span class="tech-badge">${tech}</span>`)
-    .join('');
+    // Technologies
+    const techContainer = document.getElementById('modal-tech-badges');
+    techContainer.innerHTML = data.technologies
+      .map(tech => `<span class="tech-badge">${tech}</span>`)
+      .join('');
 
-  // Compétences
-  const skillsList = document.getElementById('modal-skills-list');
-  skillsList.innerHTML = data.skills
-    .map(skill => `<li>${skill}</li>`)
-    .join('');
+    // Compétences
+    const skillsList = document.getElementById('modal-skills-list');
+    skillsList.innerHTML = data.skills
+      .map(skill => `<li>${skill}</li>`)
+      .join('');
 
-  // ✅ GESTION INTELLIGENTE DES BOUTONS
-  const buttonsContainer = document.querySelector('.modal-buttons');
-  
-  // CAS 1 : Projet de type "design" (maquettes Figma)
-  if (data.type === 'design') {
-    if (data.demo) {
-      buttonsContainer.innerHTML = `
+    // ✅ GESTION INTELLIGENTE DES BOUTONS
+    const buttonsContainer = document.querySelector('.modal-buttons');
+
+    // CAS 1 : Projet de type "design" (maquettes Figma)
+    if (data.type === 'design') {
+      if (data.demo) {
+        buttonsContainer.innerHTML = `
         <a href="${data.demo}" target="_blank" rel="noopener noreferrer" class="btn btn-color-1" style="width: 100%;">
-          Voir la maquette
+          Voir le visuel
         </a>
       `;
-    } else {
-      buttonsContainer.innerHTML = `
+      } else {
+        buttonsContainer.innerHTML = `
         <p style="text-align: center; color: var(--color-text); margin: 0;">
           <em>Maquette en cours de finalisation</em>
         </p>
       `;
+      }
     }
-  }
-  // CAS 2 : Projet sans liens (en développement)
-  else if (!data.github && !data.demo) {
-    buttonsContainer.innerHTML = `
+    // CAS 2 : Projet sans liens (en développement)
+    else if (!data.github && !data.demo) {
+      buttonsContainer.innerHTML = `
       <p style="text-align: center; color: var(--color-text); margin: 0;">
         <em>Projet en cours de développement - Disponible prochainement</em>
       </p>
     `;
-  }
-  // CAS 3 : Projet de code avec liens
-  else {
-    buttonsContainer.innerHTML = `
+    }
+    // CAS 3 : Projet de code avec liens
+    else {
+      buttonsContainer.innerHTML = `
       <a id="modal-github" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-color-2">GitHub</a>
       <a id="modal-demo" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-color-1">Live Demo</a>
     `;
-    
-    const githubBtn = document.getElementById('modal-github');
-    const demoBtn = document.getElementById('modal-demo');
-    
-    // Afficher/cacher selon disponibilité
-    if (data.github) {
-      githubBtn.href = data.github;
-      githubBtn.style.display = 'inline-flex';
-    } else {
-      githubBtn.style.display = 'none';
-    }
-    
-    if (data.demo) {
-      demoBtn.href = data.demo;
-      demoBtn.style.display = 'inline-flex';
-    } else {
-      demoBtn.style.display = 'none';
-    }
-  }
 
-  // Afficher la modale
-  this.modal.classList.add('active');
-  document.body.classList.add('modal-open');
-  this.closeBtn.focus();
-}
+      const githubBtn = document.getElementById('modal-github');
+      const demoBtn = document.getElementById('modal-demo');
+
+      // Afficher/cacher selon disponibilité
+      if (data.github) {
+        githubBtn.href = data.github;
+        githubBtn.style.display = 'inline-flex';
+      } else {
+        githubBtn.style.display = 'none';
+      }
+
+      if (data.demo) {
+        demoBtn.href = data.demo;
+        demoBtn.style.display = 'inline-flex';
+      } else {
+        demoBtn.style.display = 'none';
+      }
+    }
+
+    // Afficher la modale
+    this.modal.classList.add('active');
+    document.body.classList.add('modal-open');
+    this.closeBtn.focus();
+  }
 
   close() {
     this.modal.classList.remove('active');
@@ -241,7 +290,7 @@ async function loadModalAndInit() {
   try {
     const response = await fetch('modale.html');
     if (!response.ok) throw new Error('Erreur de chargement de la modale');
-    
+
     const html = await response.text();
     placeholder.innerHTML = html;
 
@@ -293,7 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.social-icon').forEach(icon => {
     icon.addEventListener('click', () => {
       const social = icon.getAttribute('data-social');
-      
+
       if (social === 'linkedin') {
         window.open('https://www.linkedin.com/in/yosra-mesbahi/', '_blank', 'noopener,noreferrer');
       } else if (social === 'github') {
